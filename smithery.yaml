@@ -1,0 +1,39 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - obsidianBaseUrl
+      - obsidianToken
+    properties:
+      obsidianBaseUrl:
+        type: string
+        default: http://localhost:27123
+        description: The base URL for the Obsidian API.
+      obsidianToken:
+        type: string
+        default: your_token_here
+        description: The authentication token for accessing Obsidian.
+      debug:
+        type: boolean
+        default: false
+        description: Enable debug mode if set to true.
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'bun',
+      args: ['run', 'src/index.ts'],
+      env: {
+        OBSIDIAN_BASE_URL: config.obsidianBaseUrl,
+        OBSIDIAN_TOKEN: config.obsidianToken,
+        DEBUG: config.debug ? 'true' : 'false'
+      }
+    })
+  exampleConfig:
+    obsidianBaseUrl: http://localhost:27123
+    obsidianToken: example_token_123
+    debug: false
