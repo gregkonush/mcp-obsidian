@@ -1,5 +1,7 @@
 # MCP Obsidian
 
+[![smithery badge](https://smithery.ai/badge/@gregkonush/mcp-obsidian)](https://smithery.ai/server/@gregkonush/mcp-obsidian)
+
 A server implementation of the [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol/protocol) for integrating with [Obsidian](https://obsidian.md/). This allows AI assistants to read, create, and manipulate notes in your Obsidian vault.
 
 ## Features
@@ -29,6 +31,15 @@ bun __REPO_PATH__/src/index.ts
 
 ## Installation
 
+### Installing via Smithery
+
+To install Obsidian Integration Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@gregkonush/mcp-obsidian):
+
+```bash
+npx -y @smithery/cli install @gregkonush/mcp-obsidian --client claude
+```
+
+### Manual Installation
 1. Clone this repository:
 
    ```bash
